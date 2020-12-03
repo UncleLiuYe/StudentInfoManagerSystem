@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="site.liuye.studentinfomanager.mapper.StudentMapper">
+    <select id="getAllStudent" resultMap="studentResultMap">
+        select * from student s,classinfo c where c.classid = s.studentclassid
+    </select>
+
+    <insert id="addStudent">
+        insert into student(studentname,studentclassid,studentsex,studentxuehao) values(#{student.studentname},#{student.studentclassid.classid},#{student.studentsex},#{student.studentxuehao})
+    </insert>
+
+    <delete id="deleteStudent">
+        delete from student where studentid = #{id}
+    </delete>
+
+    <update id="updateStudent">
+        update student set studentname=#{student.studentname},studentclassid=#{student.studentclassid.classid},studentsex=#{student.studentsex},studentxuehao=#{student.studentxuehao} where studentid = #{student.studentid}
+    </update>
+
+    <select id="getStudentById" resultMap="studentResultMap">
+       select * from student s,classinfo c where c.classid = s.studentclassid and s.studentid = #{id}
+    </select>
+
+    <resultMap id="studentResultMap" type="site.liuye.studentinfomanager.entity.Student">
+        <id column="studentid" property="studentid"/>
+        <result column="studentname" property="studentname"/>
+        <result column="studentsex" property="studentsex"/>
+        <result column="studentxuehao" property="studentxuehao"/>
+        <association property="studentclassid" javaType="site.liuye.studentinfomanager.entity.ClassInfo">
+            <id column="classid" property="classid"/>
+            <result column="classname" property="classname"/>
+        </association>
+    </resultMap>
+</mapper>
