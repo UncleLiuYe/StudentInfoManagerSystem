@@ -8,4 +8,5 @@
 2. 用户：
     - 增删改查学生信息
 # 喜欢的话点个star吧！
-# 线上网址:https://www.liuye.site/Shop
+# 线上网址:http://www.sis.liuye.site
+管理员用户名:admin 密码123 普通用户名:wsj 密码123
